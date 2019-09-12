@@ -25,11 +25,4 @@ public class ClearCache extends BasicTest{
         });
         homeSteps.logOut();
     }
-
-    public static void main(String[] args) {
-        ClearCache basicTest = new ClearCache();
-        basicTest.before();
-        basicTest.clearCache();
-        basicTest.after();
-    }
 }
