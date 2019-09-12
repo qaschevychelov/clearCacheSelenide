@@ -1,0 +1,424 @@
+<html><head>
+
+    <title>Hazelcast Management Center</title>
+
+    <meta name="_csrf" content="bdba5006-edd0-4aeb-a04a-664ea189f901">
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="X-CSRF-TOKEN">
+    <meta name="_current_user">
+    <meta name="ctx" content="/hazelcast-mancenter">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/hazelcast-mancenter/favicon.ico" type="image/png">
+    <link href="/hazelcast-mancenter/stylesheets/jquery-ui.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/codemirror.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/jquery.growl.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/bootstrap-switch.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/jquery.datetimepicker.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/c3.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="/hazelcast-mancenter/stylesheets/main.css" media="screen" rel="stylesheet" type="text/css">
+
+    <link href="/hazelcast-mancenter/javascripts/highlight/default.min.css" media="screen" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      // we need to get the mancenter prefix from JAVA env somehow
+      window.MANCENTER_URL_PREFIX =
+        document.querySelector("meta[name='ctx']").getAttribute('content')
+        // and we need to trim `/`, router configuration adds them when needed
+          .replace(/^\/|\/$/g, '')
+    </script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript"> if (!window.console) console = {log: function() {}}; </script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/respond.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <script src="/hazelcast-mancenter/javascripts/vendor/d3.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/c3.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/excanvas.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/codemirror/codemirror-compressed.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/bootstrap/bootstrap-dropdown-hover.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery-ui.min.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.flot.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.flot.time.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.flot.pie.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.flot.crosshair.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.flot.stack.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery_gritter.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/bootbox.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/sparkline.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/moment.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/parsley.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/bootstrap-switch.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/vendor/jquery.datetimepicker.full.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/gritter.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/highlight/highlight.min.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="/hazelcast-mancenter/javascripts/jquery.growl.1.1.3-patched.js" type="text/javascript"></script>
+
+    <script src="/hazelcast-mancenter/javascripts/app/tab.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/app.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/chart.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/cluster.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/console.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/init.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/login.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/map.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/multimap.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/member.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/queue.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/replicatedmap.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/scripting.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/timetravel.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/topic.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/reliabletopic.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/admin.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/docs.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/executor.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/alert.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/cache.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/email.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/signup.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/wan.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/hotrestart.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/clusterstate.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/license.js"></script>
+    <script src="/hazelcast-mancenter/javascripts/app/clientDetail.js"></script>
+
+<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+
+<body style="padding: 0px; margin: 0px; overflow-x: hidden; overflow-y: scroll; height: 100%; ">
+<div class="navbar navbar-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <div class="nav-collapse collapse" id="reloadSecurityConfigButtonContainer" style="display: none;">
+                <ul class="nav pull-right">
+                    <li class="active pull-right">
+                        <a href="#" onclick="reloadSecurityConfig()" style="background-color: #367dda; color: white">
+                            Reload Security Config
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="span4 offset4">
+        <div class="padded">
+            <div class="login box" style="margin-top: 80px;">
+
+                <div class="box-header">
+                    <span class="title">Management Center Login</span>
+                </div>
+
+                <div class="box-content padded">
+                    <form class="separate-sections" action="login" method="POST">
+                        <div class="input-prepend">
+                              <span class="add-on" href="#">
+                                <i class="icon-user"></i>
+                              </span>
+                            <input type="text" placeholder="username" name="username" autocomplete="off">
+                        </div>
+
+                        <div class="input-prepend">
+                          <span class="add-on" href="#">
+                            <i class="icon-key"></i>
+                          </span>
+                            <input type="password" placeholder="password" name="password" autocomplete="off">
+                        </div>
+
+                        <input type="hidden" name="_csrf" value="bdba5006-edd0-4aeb-a04a-664ea189f901">
+
+                        <div>
+                            <button class="btn btn-blue btn-block" type="submit">
+                                Login <i class="icon-signin"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/hazelcast-mancenter/javascripts/app/login-only.js"></script>
+
+<div style="display: none">
+
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+
+        
+
+        
+
+        
+
+        
+        
+        
+
+        <div id="alertMessage" class="resultDialog" style="display:none" title="Alert Message Details">
+
+        </div>
+        
+
+        
+
+        
+
+        <div id="alertPopupDialog" title="New Alerts" style="z-index:2;display:none;height:100px;overflow-x:hidden;overflow-y:scroll;padding:10px;" class="ui-state-error ui-corner-all">
+            <a style="float:left;font-size:16px;">NEW ALERT!</a>
+            <button style="float:right;height:20px;width:20px;" class="ui-icon ui-icon-close" onclick=" $('#alertPopupDialog').hide() "></button>
+            <br>
+            <a id="alertPopup" style="width:300px;height:100px;"> </a>
+        </div>
+
+        <!-- Time Travel-->
+        
+        
+
+        
+    
+</div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="securityProvidersDialog" style="position: absolute; top: 238.534px; left: 519.112px; display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Configure security</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="securityProvidersDialog" class="security-providers-div ui-dialog-content ui-widget-content" data-backdrop="static">
+    <div id="securityProvidesDiv">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label for="securityProviderSelect" class="control-label">Security Provider:</label>
+
+                <div class="controls">
+                    <select id="securityProviderSelect" style="height: 28px">
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="configureSecurityProviderDiv">
+        <form class="form-horizontal" id="securityProviderConfigForm">
+        </form>
+    </div>
+</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" id="saveSecurityProviderConfigurationButton" class="has-spinner ui-button ui-corner-all ui-widget">Save</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div id="growls" class="default"></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="slowOperationDialog" aria-labelledby="ui-id-2" style="position: absolute; top: 273.128px; left: 585.433px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Details of Slow Operation</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="slowOperationDialog" class="login-div ui-dialog-content ui-widget-content">
+            <table id="slowOperationDetail" class="table" style="padding:2px">
+                <tbody>
+                </tbody>
+            </table>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="smtpConfigDialog" aria-labelledby="ui-id-3" style="position: absolute; top: 166.022px; left: 487.615px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-3" class="ui-dialog-title">Set up SMTP Server </span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="smtpConfigDialog" class="login-div ui-dialog-content ui-widget-content">
+            <div id="smtpConfigDiv">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label for="userNameInput" class="control-label">Email:</label>
+
+                        <div class="controls">
+                            <input type="email" id="userNameInput" value="info@yourserver.com">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="userPasswordInput" class="control-label">Password:</label>
+
+                        <div class="controls">
+                            <input type="password" id="userPasswordInput" value="dev-pass">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="hostAdressInput" class="control-label">Host Address:</label>
+
+                        <div class="controls">
+                            <input type="text" id="hostAdressInput" value="smtp.yourserver.com">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="hostPortInput" class="control-label">Host Port:</label>
+
+                        <div class="controls">
+                            <input type="text" id="hostPortInput" value="587">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="tlsEnabledInput" class="control-label">TLS Connection:</label>
+
+                        <div class="controls">
+                            <input type="checkbox" id="tlsEnabledInput">
+                        </div>
+                    </div>
+                </form>
+                <div id="setupSMTPMessage" style="padding-top: 5px; color: red;"></div>
+            </div>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" id="setSmtpButton" class="has-spinner ui-button ui-corner-all ui-widget">Save Config</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="hotRestartDialog" aria-labelledby="ui-id-4" style="position: absolute; top: 273.128px; left: 593.096px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-4" class="ui-dialog-title">Force Starting CLuster</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="hotRestartDialog" class="login-div ui-dialog-content ui-widget-content" data-backdrop="static">
+            <div class="progress progress-striped active">
+                <div id="hotRestartBar" class="bar" style="width: 100%;"></div>
+            </div>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="changeClusterStatusDialog" aria-labelledby="ui-id-5" style="position: absolute; top: 273.128px; left: 591.768px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-5" class="ui-dialog-title">Changing Cluster State</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="changeClusterStatusDialog" class="login-div ui-dialog-content ui-widget-content" data-backdrop="static">
+            <div class="progress progress-striped active">
+                <div id="changeClusterStatusBar" class="bar" style="width: 100%;"></div>
+            </div>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="saveScriptDialog" aria-labelledby="ui-id-6" style="position: absolute; top: 229.534px; left: 539.049px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-6" class="ui-dialog-title">Script already exist</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="saveScriptDialog" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                A script with the given name already exist!
+                <br>
+                <br>
+                Do you want to overwrite existing script?
+                <br>
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" id="saveScriptOverwrite" class="ui-button ui-corner-all ui-widget">Overwrite</button><button type="button" id="saveScriptCancel" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="saveScriptNoNameDialog" aria-labelledby="ui-id-7" style="position: absolute; top: 243.534px; left: 584.746px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-7" class="ui-dialog-title">No script name!</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="saveScriptNoNameDialog" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                Please set a script name<br>
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" id="saveScriptNoNameCancel" class="ui-button ui-corner-all ui-widget">OK</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="deleteScriptDialog" aria-labelledby="ui-id-8" style="position: absolute; top: 243.534px; left: 536.049px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-8" class="ui-dialog-title">Delete Script</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="deleteScriptDialog" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                Are you sure you want to delete this script?<br>
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" id="deleteScriptDialog" class="ui-button ui-corner-all ui-widget">Delete</button><button type="button" id="deleteScriptDialog" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="deleteUserConfirm" aria-labelledby="ui-id-9" style="position: absolute; top: 216.034px; left: 478.776px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-9" class="ui-dialog-title">Delete User?</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="deleteUserConfirm" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                The user will be deleted and
+                cannot be recovered. Are you sure?
+                <br>
+            </p>
+            <form class="form-horizontal" id="deleteUserConfirmModalForm">
+                <div class="control-group">
+                    <label for="e_ownPassword" class="control-label">Your Own Password:</label>
+                    <div class="controls">
+                        <input type="password" id="e_ownPassword" autocomplete="off" parsley-trigger="change" required="">
+                    </div>
+                </div>
+            </form>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Delete User</button><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="changePasswordModal" aria-labelledby="ui-id-10" style="position: absolute; top: 128.534px; left: 462.612px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-10" class="ui-dialog-title">Change Password</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="changePasswordModal" class="ui-dialog-content ui-widget-content">
+            <form class="form-horizontal" id="changePasswordModalForm">
+                <div class="control-group">
+                    <label for="newPasswordInput" class="control-label">New Password for the User:</label>
+                    <div class="controls">
+                        <input type="password" id="newPasswordInput" autocomplete="off" parsley-trigger="change" required="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="confirmPasswordInput" class="control-label">Confirm New Password for the User:</label>
+                    <div class="controls">
+                        <input type="password" id="confirmPasswordInput" autocomplete="off" parsley-trigger="change" parsley-equalto="#newPasswordInput" required="">
+                    </div>
+                </div>
+
+                <div class="control-group well well-large">
+                    <label for="ownPasswordInput" class="control-label">Enter your password to authorise</label>
+                    <div class="controls">
+                        <input type="password" id="ownPasswordInput" autocomplete="off" parsley-trigger="change" required="">
+                    </div>
+                </div>
+
+            </form>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Change Password</button><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="threadDumpDialog" aria-labelledby="ui-id-11" style="position: absolute; top: 168.628px; left: 587.112px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-11" class="ui-dialog-title">Thread Dump</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="threadDumpDialog" class="ui-dialog-content ui-widget-content">
+            <textarea id="threadDumpModalBody" rows="10" style="height:100%; width: 100%;"></textarea>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="nodeShutdownDialog" aria-labelledby="ui-id-12" style="position: absolute; top: 175.534px; left: 519.041px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-12" class="ui-dialog-title">Member Shutdown</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="nodeShutdownDialog" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                Are you sure you want to shutdown this member? <br>
+            </p>
+            <div class="control-group">
+                <label for="groupNameInputForShutdown" class="control-label">Group Name:</label>
+                <div class="controls">
+                    <input type="text" id="groupNameInputForShutdown" value="groupName" autocomplete="off">
+                </div>
+                <label for="clusterPasswordInputForShutdown" class="control-label">Password:</label>
+                <div class="controls">
+                    <input type="password" id="clusterPasswordInputForShutdown" value="dev-pass" autocomplete="off">
+                </div>
+            </div>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Shutdown Member</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="promoteMemberDialog" aria-labelledby="ui-id-13" style="position: absolute; top: 243.534px; left: 464.683px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-13" class="ui-dialog-title">Promote Member</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="promoteMemberDialog" class="ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                Are you sure you want to promote this lite member to a data member? <br>
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Promote</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="clusterShutdownDialog" aria-labelledby="ui-id-14" style="position: absolute; top: 231.034px; left: 453.08px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-14" class="ui-dialog-title">Shutdown Cluster</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="clusterShutdownDialog" class="login-div ui-dialog-content ui-widget-content">
+            <p class="lead">
+                Are you sure you want to shutdown Cluster? <br>
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Shutdown Cluster</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="forceStartDialog" aria-labelledby="ui-id-15" style="position: absolute; top: 200.034px; left: 80.5634px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-15" class="ui-dialog-title">Trigger Force Start</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="forceStartDialog" class="login-div ui-dialog-content ui-widget-content">
+            <p class="lead">
+                Are you sure you want to trigger Force Start? <br>
+            </p>
+            <blockquote>
+                <p>Forces node to start by skipping hot-restart completely and removing all hot-restart data even if node is still on validation phase or loading hot-restart data.</p>
+            </blockquote>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Force Start</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="partialStartDialog" aria-labelledby="ui-id-16" style="position: absolute; top: 219.534px; left: 552.612px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-16" class="ui-dialog-title">Trigger Partial Start</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="partialStartDialog" class="login-div ui-dialog-content ui-widget-content">
+            <div class="control-group">
+                <label for="passInputForPartialStart" class="control-label"> Please Enter Cluster Password:</label>
+                <div class="controls">
+                    <input type="password" id="passInputForPartialStart" value="dev-pass" autocomplete="off">
+                </div>
+            </div>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Partial Start</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="hrBackupDialog" aria-labelledby="ui-id-17" style="position: absolute; top: 219.534px; left: 552.612px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-17" class="ui-dialog-title">Trigger Hot Backup</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="hrBackupDialog" class="login-div ui-dialog-content ui-widget-content">
+            <div class="control-group">
+                <label for="passInputForHRBackup" class="control-label"> Please Enter Cluster Password:</label>
+                <div class="controls">
+                    <input type="password" id="passInputForHRBackup" value="dev-pass" autocomplete="off">
+                </div>
+            </div>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Start</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="hrBackupInterruptDialog" aria-labelledby="ui-id-18" style="position: absolute; top: 219.534px; left: 552.612px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-18" class="ui-dialog-title">Interrupt Hot Backup</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="hrBackupInterruptDialog" class="login-div ui-dialog-content ui-widget-content">
+            <div class="control-group">
+                <label for="passInputForHRBackupInterrupt" class="control-label"> Please Enter Cluster Password:</label>
+                <div class="controls">
+                    <input type="password" id="passInputForHRBackupInterrupt" value="dev-pass" autocomplete="off">
+                </div>
+            </div>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button><button type="button" class="ui-button ui-corner-all ui-widget">Interrupt</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="saveFilterDialog" aria-labelledby="ui-id-19" style="position: absolute; top: 263.628px; left: 505.705px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-19" class="ui-dialog-title">Filter already exist</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="saveFilterDialog" class="resultDialog ui-dialog-content ui-widget-content" style="">
+            <p><i class="icon-warning-sign"></i>
+                A filter with the given name already exist!
+                <br>
+                Do you want to overwrite existing filter with new settings ?
+                <br>
+            </p>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="deleteFilterDialog" aria-labelledby="ui-id-20" style="position: absolute; top: 263.628px; left: 502.699px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-20" class="ui-dialog-title">Delete Filter</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="deleteFilterDialog" class="resultDialog ui-dialog-content ui-widget-content" style="">
+            <p><i class="icon-warning-sign"></i>
+                Are you sure you want to delete this filter permanently ? <br>
+                This will also delete old persisted alerts.
+            </p>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" aria-describedby="saveFilterNoNameDialog" aria-labelledby="ui-id-21" style="position: absolute; top: 270.628px; left: 587.746px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-21" class="ui-dialog-title">No filter task!</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="saveFilterNoNameDialog" class="resultDialog ui-dialog-content ui-widget-content" style="">
+            <p><i class="icon-warning-sign"></i>
+                Please set a filter name <br>
+            </p>
+        </div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="enableTimeTravelDialog" aria-labelledby="ui-id-22" style="position: absolute; top: 236.534px; left: 402.971px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-22" class="ui-dialog-title">Enable Time Travel</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="enableTimeTravelDialog" class="resultDialog ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                By default, time travel module is not enabled. <br> If you enable, the cluster states will be persisted to the
+                disk while Management center is running.
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Enable</button><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="disableTimeTravelDialog" aria-labelledby="ui-id-23" style="position: absolute; top: 243.534px; left: 307.933px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-23" class="ui-dialog-title">Disable Time Travel</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="disableTimeTravelDialog" class="resultDialog ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                Time Travel module will be disabled. Cluster states will not be persisted to disk and you can not reach past
+                data. Do you confirm?
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Disable</button><button type="button" class="ui-button ui-corner-all ui-widget">Cancel</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="writeErrorDialog" aria-labelledby="ui-id-24" style="position: absolute; top: 229.534px; left: 245.205px; display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-24" class="ui-dialog-title">Error: Directory Write Problem</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="writeErrorDialog" class="resultDialog ui-dialog-content ui-widget-content">
+            <p><i class="icon-warning-sign"></i>
+                There is a problem on writing to the directory <span id="dataDirectory" style="font-weight: bold;"></span>.
+                <br>
+                Either make it writable or change the data directory setting "hazelcast.mancenter.home" system property.
+                <br>
+                Or you can continue in read-only mode in that case license and login credentials can not be saved/remembered and
+                time-travel module will not be available.
+            </p>
+        </div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-corner-all ui-widget">Continue Read-Only</button><button type="button" class="ui-button ui-corner-all ui-widget">Retry</button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div></body></html>
