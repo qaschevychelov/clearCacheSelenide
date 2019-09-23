@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import steps.AuthSteps;
@@ -9,17 +10,23 @@ public class BasicTest {
     public AuthSteps authSteps;
     public HomeSteps homeSteps;
 
-    private String url = "http://rtd-testy-app:38080/hazelcast-mancenter/admin/console";
-
     @BeforeClass
     public void before() {
         authSteps = new AuthSteps();
         homeSteps = new HomeSteps();
 
-        System.setProperty("webdriver.chrome.driver", "./bin/chromedriver/chromedriver.exe");
-        Configuration.timeout = 20000;
-        Configuration.startMaximized = true;
-        Selenide.open(url);
+        /*Configuration.browser = "firefox";
+        if (System.getProperty("os.name").toLowerCase().contains("windows"))
+            System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+        else
+            System.setProperty("webdriver.gecko.driver", "geckodriver");*/
+        Configuration.browser = ConfigureProperties.getConfigureProperty("Configuration.browser");
+        WebDriverManager.chromedriver().version(ConfigureProperties.getConfigureProperty("Configuration.version"))
+                .setup();
+        Configuration.timeout = Long.parseLong(ConfigureProperties.getConfigureProperty("Configuration.timeout"));
+        Configuration.startMaximized =
+                Boolean.parseBoolean(ConfigureProperties.getConfigureProperty("Configuration.startMaximized"));
+        Selenide.open(ConfigureProperties.getConfigureProperty("URL"));
     }
 
     @AfterClass

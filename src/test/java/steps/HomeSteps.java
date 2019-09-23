@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import pages.AuthPage;
 import pages.HomePage;
 
@@ -17,6 +18,7 @@ public class HomeSteps {
     /**
      * Метод кликает на сайдбар с Map
      */
+    @Step
     public void clickMaps() {
         homePage.clickMaps();
         for (int i = 0; i < 10; i++) {
@@ -29,6 +31,7 @@ public class HomeSteps {
     /**
      * Метод очищает поле поиска мэп
      */
+    @Step
     public void clearSearchMap() {
         homePage.clearSearchMap();
         homePage.waitUntilFirstMapVisible();
@@ -38,6 +41,7 @@ public class HomeSteps {
      * Метод пролистывает все страницы и получает все мэпы
      * @return List
      */
+    @Step
     public List<String> getAllMaps() {
         List<String> maps = homePage.getAllMaps();
         if (homePage.isArrowRightVisible()) {
@@ -55,6 +59,7 @@ public class HomeSteps {
     /**
      * Метод кликает на меню Консоль
      */
+    @Step
     public void clickConsole() {
         homePage.clickConsole();
         homePage.waitUntilConsoleTextAreaVisible();
@@ -64,6 +69,7 @@ public class HomeSteps {
      * Метод вводит в консоль команду
      * @param text String команда
      */
+    @Step
     public void typeConsole(String text) {
         homePage.typeConsole(text);
     }
@@ -71,6 +77,7 @@ public class HomeSteps {
     /**
      * Метод делает разлогин
      */
+    @Step
     public void logOut() {
         homePage.clickLogOut();
         authPage.waitUntilUserNameVisible();
@@ -80,6 +87,7 @@ public class HomeSteps {
      * Метод дожидается смены неймСпейса
      * @param namespace String пространство имен
      */
+    @Step
     public void waitUntilNameSpaceChanged(String namespace) {
         homePage.waitUntilNameSpaceChanged(namespace);
     }
@@ -87,6 +95,7 @@ public class HomeSteps {
     /**
      * Метод ожидает видимости поля логин
      */
+    @Step
     public void waitUntilNameSpaceCleared(String namespace) {
         homePage.waitUntilNameSpaceCleared(namespace);
     }

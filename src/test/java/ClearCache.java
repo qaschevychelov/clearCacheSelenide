@@ -9,27 +9,22 @@ public class ClearCache extends BasicTest{
 
     @Test(enabled = true, description = "Очистка кэша")
     public void clearCache() {
-        authSteps.login(user, pass);
+        try {
+            authSteps.login(user, pass);
 
-        homeSteps.clickMaps();
-        homeSteps.clearSearchMap();
+            homeSteps.clickMaps();
+            homeSteps.clearSearchMap();
 
-        List<String> maps = homeSteps.getAllMaps();
-        homeSteps.clickConsole();
+            List<String> maps = homeSteps.getAllMaps();
+            homeSteps.clickConsole();
 
-        maps.forEach(one -> {
-            homeSteps.typeConsole("ns " + one);
-            homeSteps.waitUntilNameSpaceChanged(one);
-            homeSteps.typeConsole("m.clear");
-            homeSteps.waitUntilNameSpaceCleared(one);
-        });
-        homeSteps.logOut();
-    }
-
-    public static void main(String[] args) {
-        ClearCache basicTest = new ClearCache();
-        basicTest.before();
-        basicTest.clearCache();
-        basicTest.after();
+            maps.forEach(one -> {
+                homeSteps.typeConsole("ns " + one);
+                homeSteps.waitUntilNameSpaceChanged(one);
+                homeSteps.typeConsole("m.clear");
+                homeSteps.waitUntilNameSpaceCleared(one);
+            });
+            homeSteps.logOut();
+        } catch (Throwable e) { homeSteps.logOut(); }
     }
 }
