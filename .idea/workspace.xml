@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d24c8c63-d33d-4ba3-a41f-7f6b093627d1" name="Default Changelist" comment="" />
+    <list default="true" id="d24c8c63-d33d-4ba3-a41f-7f6b093627d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/chromedriver/chromedriver.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/chromedriver/chromedriver.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/configure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/configure.properties" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,16 +15,64 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ClearCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="21" column="53" lean-forward="true" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+            <state relative-caret-position="170">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/BasicTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/configure.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/steps/HomeSteps.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1156">
+              <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1705#1706#0" expanded="true" />
+                <element signature="e#1747#1748#0" expanded="true" />
+                <element signature="e#2092#2093#0" expanded="true" />
+                <element signature="e#2153#2154#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pages/HomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,10 +96,14 @@
       <find>hazelCastPage</find>
       <find>userName</find>
       <find>typeConsole</find>
+      <find>30032524</find>
     </findStrings>
     <replaceStrings>
       <replace>homeSteps</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -55,13 +111,15 @@
         <option value="$PROJECT_DIR$/src/test/java/pages/BasePage.java" />
         <option value="$PROJECT_DIR$/src/test/java/steps/BaseSteps.java" />
         <option value="$PROJECT_DIR$/src/test/java/pages/AuthPage.java" />
-        <option value="$PROJECT_DIR$/src/test/java/pages/HomePage.java" />
         <option value="$PROJECT_DIR$/src/test/java/steps/HomeSteps.java" />
         <option value="$PROJECT_DIR$/src/test/java/steps/AuthSteps.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/BasicTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ClearCache.java" />
         <option value="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/allure-results/1d37f173-0ffb-4167-9410-9e7cc5702a92-container.json" />
+        <option value="$PROJECT_DIR$/src/test/java/pages/HomePage.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/configure.properties" />
       </list>
     </option>
   </component>
@@ -82,16 +140,19 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="-1374" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -102,20 +163,43 @@
             <path>
               <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
               <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
               <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="test-classes" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="chromedriver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="clearHazelcastSelenide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clearHazelcastSelenide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClearCache">
+  <component name="RunManager" selected="TestNG.ClearCache.clearCache">
     <configuration name="ClearCache" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClearCache" />
       <module name="clearHazelcastSelenide" />
@@ -169,8 +253,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClearCache" />
         <item itemvalue="TestNG.ClearCache.clearCache" />
+        <item itemvalue="Application.ClearCache" />
         <item itemvalue="JUnit.ClearCache.clearCache" />
       </list>
     </recent_temporary>
@@ -189,34 +273,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 14h 54m 00s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.01.30 at 13h 45m 22s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 14h 58m 34s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.01.30 at 13h 49m 49s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 15h 42m 41s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.01.31 at 14h 03m 44s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 15h 55m 24s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.03 at 09h 27m 35s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 07m 14s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.03 at 09h 41m 36s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 08m 52s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.04 at 14h 13m 29s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 09m 34s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.04 at 14h 28m 53s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 10m 19s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.05 at 13h 59m 38s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 13m 02s.xml">
-      <configuration name="ClearCache.clearCache" configurationId="JUnit" />
+    <history-entry file="ClearCache_clearCache - 2020.02.05 at 14h 12m 05s.xml">
+      <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="ClearCache_clearCache - 2019.09.12 at 16h 26m 30s.xml">
+    <history-entry file="ClearCache_clearCache - 2020.02.05 at 17h 32m 40s.xml">
       <configuration name="ClearCache.clearCache" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -224,37 +308,38 @@
     <frame x="-1374" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="DB Browser" />
-      <window_info id="UI Designer" />
-      <window_info id="Project Explorer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Capture Tool" />
-      <window_info id="Job Explorer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3547655" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30484116" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="DB Execution Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.27168575" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Messages" weight="0.32936078" />
-      <window_info anchor="bottom" id="Console" />
+      <window_info id="Designer" order="2" />
+      <window_info id="DB Browser" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Project Explorer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Job Explorer" order="8" />
+      <window_info id="Image Layers" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4942717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" weight="0.46822995" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Console" order="7" />
+      <window_info anchor="bottom" id="DB Execution Console" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.27168575" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.46822995" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
   </component>
   <component name="XDebuggerManager">
@@ -325,95 +410,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pages/BasePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/steps/BaseSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding>
-            <element signature="e#120#121#0" expanded="true" />
-            <element signature="e#166#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pages/BasePage.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/BaseSteps.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pages/AuthPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1156#1157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pages/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-536">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#1401#1402#0" expanded="true" />
-            <element signature="e#1436#1437#0" expanded="true" />
-            <element signature="e#1544#1545#0" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
-            <element signature="e#1744#1745#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#1902#1903#0" expanded="true" />
-            <element signature="e#1940#1941#0" expanded="true" />
-            <element signature="e#2043#2044#0" expanded="true" />
-            <element signature="e#2062#2063#0" expanded="true" />
-            <element signature="e#2466#2467#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2589#2590#0" expanded="true" />
-            <element signature="e#2619#2620#0" expanded="true" />
-            <element signature="e#2739#2740#0" expanded="true" />
-            <element signature="e#2795#2796#0" expanded="true" />
-            <element signature="e#2971#2972#0" expanded="true" />
-            <element signature="e#3004#3005#0" expanded="true" />
-            <element signature="e#3088#3089#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#2824#2825#0" expanded="true" />
-            <element signature="e#2872#2873#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/steps/HomeSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1655#1656#0" expanded="true" />
-            <element signature="e#1686#1687#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-            <element signature="e#1920#1921#0" expanded="true" />
-            <element signature="e#1971#1972#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -427,25 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/BasicTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -453,10 +436,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/allure-results/1d37f173-0ffb-4167-9410-9e7cc5702a92-container.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/allure-results/0a37cc40-09e0-4a19-bc11-7bbfa20d1030-container.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="146" column="16" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="146" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ConfigureProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pages/AuthPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ClearCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="21" column="53" lean-forward="true" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+        <state relative-caret-position="170">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/BasicTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/configure.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/HomeSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1747#1748#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+            <element signature="e#2153#2154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pages/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
