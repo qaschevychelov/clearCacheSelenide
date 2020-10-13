@@ -11,7 +11,7 @@
     <properties>
         <selenide.v>4.9.1</selenide.v>
         <slf4j.v>1.7.13</slf4j.v>
-        <junit.v>4.12</junit.v>
+        <junit.v>4.13.1</junit.v>
         <browser>chrome</browser>
         <holdBrowserOpen>false</holdBrowserOpen>
         <selenium.version>3.141.59</selenium.version>
